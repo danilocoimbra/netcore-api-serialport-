@@ -1,5 +1,4 @@
-﻿using Backend.Configurations;
-using Backend.IoC;
+﻿using Backend.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,13 +27,6 @@ namespace Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(Configuration);
-
-            services.AddWebApi(options =>
-            {
-                options.OutputFormatters.Remove(new XmlDataContractSerializerOutputFormatter());
-                options.UseCentralRoutePrefix(new RouteAttribute("api/v1"));
-            });
-
 
             services.AddSwaggerGen(s =>
             {
